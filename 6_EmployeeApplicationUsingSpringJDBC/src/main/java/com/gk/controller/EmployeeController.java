@@ -72,7 +72,7 @@ public class EmployeeController {
 		return "EditForm";
 	}
 
-	@RequestMapping(value = "/editform")
+	@RequestMapping(value = "/editform",method = RequestMethod.POST)
 	public String edit(@RequestParam String eid, ModelMap map) {
 		String status = "";
 		Employee employee = employeeService.searchEmployee(eid);
