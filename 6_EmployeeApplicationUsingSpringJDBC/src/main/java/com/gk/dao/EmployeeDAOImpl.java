@@ -25,7 +25,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		try {
 			Employee emp = search(employee.getEmpId());// Only to check that employee object is null or not.
 			if (emp == null) {
-				int rowCount = jdbcTemp.update("insert into EMPLOYEE values('" + employee.getEmpId() + "','"
+				int rowCount = jdbcTemp.update("insert into EMPLOYEE1 values('" + employee.getEmpId() + "','"
 						+ employee.getEmpName() + "','" + employee.getEmpAddress() + "')");
 				if (rowCount == 1) {
 					status = "Success";
@@ -46,7 +46,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public Employee search(String empId) {
 		Employee employee = null;
-		List<Employee> list = jdbcTemp.query("Select * from EMPLOYEE where EMPID='" + empId + "'",
+		List<Employee> list = jdbcTemp.query("Select * from EMPLOYEE1 where EMPID='" + empId + "'",
 				new RowMapper<Employee>() {
 
 					@Override
@@ -70,7 +70,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public String update(Employee employee) {
 
 		String status = "";
-		int rowCount = jdbcTemp.update("update EMPLOYEE set EMPNAME = '" + employee.getEmpName() + "',EMPADDRESS='"
+		int rowCount = jdbcTemp.update("update EMPLOYEE1 set EMPNAME = '" + employee.getEmpName() + "',EMPADDRESS='"
 				+ employee.getEmpAddress() + "' where EMPID='" + employee.getEmpId() + "'");
 		if (rowCount == 1) {
 			status = "Success";
@@ -90,7 +90,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			status="NotExisted";
 		}
 		else {
-			int rowCount=jdbcTemp.update("delete from EMPLOYEE where EMPID='"+empId+"'");
+			int rowCount=jdbcTemp.update("delete from EMPLOYEE1 where EMPID='"+empId+"'");
 			if(rowCount==1) {
 				status="Success";
 			}
